@@ -1,40 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <title>Todo app</title>
-
-
-</head>
-<body class="bg-darkGrayBlue5">
-  <div class="px-6 py-12 bg-mobileBackground1 bg-no-repeat">
-    <div class="flex justify-between items-center">
-      <h1 class="text-3xl text-lightgGray font-bold tracking-widest">TODO</h1>
-      <img class="relative -top-0.5" src="./icon-sun.svg" alt="a sun shaped button">
-    </div>
-    <div>
-      <div class="flex gap-2 px-4 py-2 mt-8 bg-darkGrayBlue5 rounded">
-        <input class="appearance-none border bg-transparent border-white rounded-full p-4 checked:bg-center checked:bg-no-repeat checked:bg-gradient-to-r checked:from-gradient1 checked:to-gradient2" type="checkbox">
-        <input class="w-full p-1 bg-transparent" type="text" placeholder="Create a new Todo...">
-      </div>
-    </div>
-  </div>
-
-  
-    <div class="hidden sm:flex sm:justify-evenly">
-      <button>All</button><button>Active</button><button>Completed</button>
-    </div>
-  </div>
-  <div class="mt-6 text-center">
-    <p>Drag and drop to reorder list</p>
-  </div>
-</body>
-<script src="./main.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
