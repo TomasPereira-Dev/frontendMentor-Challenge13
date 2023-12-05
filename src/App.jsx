@@ -2,15 +2,13 @@ import { useRef, useState } from 'react'
 import './App.css'
 
 function App() {
-  const storage = JSON.parse(localStorage.getItem("tasks"));
-
   const inputRef = useRef(null);
   const [taskName, setTaskName] = useState(null);
   const [taskList, setTaskList] = useState ([]);
+  const storage = localStorage.getItem("tasks");
+  storage === null ? localStorage.setItem("tasks", "sample") : () => {setTaskList([...taskList, storage])};
 
-  const updateStorage = () => {
-    console.log(taskName)
-    const newJson = JSON.stringify(taskList);
+  const updateStorage = (newJson) => {
     localStorage.setItem("tasks", newJson)
   }
   
@@ -20,10 +18,9 @@ function App() {
                             name: taskName,
                             isActive: true,                      
       }
-      setTaskList([...taskList, taskObject])
       setTaskName(null);
+      setTaskList([...taskList, taskObject])
       inputRef.current.value = " ";
-      updateStorage();
     }
   }
 
