@@ -1,15 +1,24 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 function App() {
+  const initialFunction = () => {
+    const initialTaskList = localStorage.getItem("tasks");
+    if(initialTaskList === null){
+      const initialItem = JSON.stringify([])
+      localStorage.setItem("tasks", initialItem)
+      return []
+    }
+    return JSON.parse(initialTaskList)
+  }
+
   const inputRef = useRef(null);
   const [taskName, setTaskName] = useState(null);
-  const [taskList, setTaskList] = useState ([]);
-  const storage = localStorage.getItem("tasks");
-  storage === null ? localStorage.setItem("tasks", "sample") : () => {setTaskList([...taskList, storage])};
+  const [taskList, setTaskList] = useState(initialFunction);
+
 
   const updateStorage = (newJson) => {
-    localStorage.setItem("tasks", newJson)
+    localStorage.setItem("tasks", newJson);
   }
   
   const taskHandler = (e) => {
@@ -18,11 +27,17 @@ function App() {
                             name: taskName,
                             isActive: true,                      
       }
+
       setTaskName(null);
-      setTaskList([...taskList, taskObject])
+      setTaskList([...taskList, taskObject]);
       inputRef.current.value = " ";
     }
   }
+
+  useEffect(()=>{
+    const newJson = JSON.stringify(taskList);  
+    updateStorage(newJson)
+  })
 
   return (
     <>
@@ -40,7 +55,6 @@ function App() {
         </div>
       </div>
     </div>
-
     </>
   )
 }
