@@ -22,8 +22,18 @@ export default {
         fontFamily: {
           sans: "'Josefin Sans', sans-serif"
         },
+        textColor: {
+          lightGrayishBlue1: "hsl(234, 39%, 85%)",
+          lightGrayishBlue2: "hsl(236, 33%, 92%)",
+          darkGrayishBlue1: "hsl(234, 11%, 52%)",
+          darkGrayishBlue2: "hsl(233, 14%, 35%)"
+        },
         letterSpacing: {
           letterSpacing1: "1ch"
+        },
+        borderColor: {
+          darkGrayishBlue1: "hsl(234, 11%, 52%)",
+          darkGrayishBlue2: "hsl(233, 14%, 35%)"
         }
     },
   },
