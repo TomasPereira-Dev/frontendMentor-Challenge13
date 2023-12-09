@@ -37,9 +37,20 @@ function App() {
     }
   }
 
-  const checkHandler = () => {
-     checkRef.current.classList.toggle("line-through")
+  const checkHandler = (itemId) => {
+    const taskListCopy = taskList.slice();
+    for(let i = 0; i < taskListCopy.length; i++){
+      if(taskListCopy[i].id === itemId){
+         if(taskListCopy[i].isActive === false){
+            taskListCopy[i].isActive = true;
+         }else{
+            taskListCopy[i].isActive = false;
+         }
+      }
+      setTaskList(taskListCopy)
+    }
   }
+
 
   const darkModeHandler = () => {
     const htmlElement = document.querySelector("html");
@@ -51,13 +62,13 @@ function App() {
     }
   }
 
-  const mappedTaskList = taskList.map(item =>
-    <li className='flex justify-between px-6 py-3' key={item.id}>
+  const mappedTaskList = taskList.map(item => 
+    <li className={`flex justify-between px-6 py-3 ${item.isActive ? `no-underline` : `line-through`}`} ref={checkRef} key={item.id}>
       <div className='flex gap-4 items-center'>
-        <button className='p-2 border dark:border-darkGrayishBlue2 rounded-full' onClick={checkHandler}>
+        <button className='p-2 border dark:border-darkGrayishBlue2 rounded-full' onClick={() => checkHandler(item.id)}>
           <img className='invisible' src="./src/assets/icon-check.svg" alt=" "/>
         </button>
-        <p className='text-darkGrayishBlue4 dark:text-lightGrayishBlue1' ref={checkRef}>{item.name}</p>
+        <p className={`text-darkGrayishBlue4 dark:text-lightGrayishBlue1`}>{item.name}</p>
       </div>
       <button>
         <img src="./src/assets/icon-cross.svg" alt=" "/>
