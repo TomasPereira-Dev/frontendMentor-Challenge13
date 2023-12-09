@@ -14,7 +14,6 @@ function App() {
   }
 
   const inputRef = useRef(null);
-  const checkRef = useRef(null);
   const [taskName, setTaskName] = useState(null);
   const [taskList, setTaskList] = useState(initialFunction);
   const [switcherIcon, setSwitcherIcon] = useState("./src/assets/icon-sun.svg");
@@ -47,10 +46,9 @@ function App() {
             taskListCopy[i].isActive = false;
          }
       }
-      setTaskList(taskListCopy)
+      setTaskList(taskListCopy);
     }
   }
-
 
   const darkModeHandler = () => {
     const htmlElement = document.querySelector("html");
@@ -62,15 +60,25 @@ function App() {
     }
   }
 
+  const deleteHandler = (itemId) => {
+    const taskListCopy = taskList.slice();
+    for(let i = 0; i < taskListCopy.length; i++){
+      if(taskListCopy[i].id === itemId){
+        taskListCopy.splice(i, 1);
+      }
+    }
+    setTaskList(taskListCopy)
+  }
+
   const mappedTaskList = taskList.map(item => 
-    <li className={`flex justify-between px-6 py-3 ${item.isActive ? `no-underline` : `line-through`}`} ref={checkRef} key={item.id}>
+    <li className={`flex justify-between px-6 py-3 ${item.isActive ? `no-underline` : `line-through`}`} key={item.id}>
       <div className='flex gap-4 items-center'>
         <button className='p-2 border dark:border-darkGrayishBlue2 rounded-full' onClick={() => checkHandler(item.id)}>
           <img className='invisible' src="./src/assets/icon-check.svg" alt=" "/>
         </button>
         <p className={`text-darkGrayishBlue4 dark:text-lightGrayishBlue1`}>{item.name}</p>
       </div>
-      <button>
+      <button onClick={() => {deleteHandler(item.id)}}>
         <img src="./src/assets/icon-cross.svg" alt=" "/>
       </button>
     </li>);
