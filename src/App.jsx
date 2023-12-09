@@ -17,6 +17,7 @@ function App() {
   const [taskName, setTaskName] = useState(null);
   const [taskList, setTaskList] = useState(initialFunction);
   const [switcherIcon, setSwitcherIcon] = useState("./src/assets/icon-sun.svg");
+  const [listCounter, setListCounter] = useState(0);
   const newJson = JSON.stringify(taskList);
 
   const updateStorage = useCallback((newJson => {
@@ -70,6 +71,16 @@ function App() {
     setTaskList(taskListCopy)
   }
 
+  const counterHandler = useCallback(() => {
+    let counter = 0;
+    for(let i = 0; i < taskList.length; i++){
+      if(taskList[i].isActive === true) {
+        counter++
+      }
+    }
+    setListCounter(counter)
+  }, [taskList])
+
   const mappedTaskList = taskList.map(item => 
     <li className={`flex justify-between px-6 py-3 ${item.isActive ? `no-underline` : `line-through`}`} key={item.id}>
       <div className='flex gap-4 items-center'>
@@ -85,7 +96,8 @@ function App() {
 
   useEffect(() => {  
     updateStorage(newJson)
-  },[updateStorage, newJson])
+    counterHandler()
+  },[counterHandler ,updateStorage, newJson])
 
   return (
     <>
@@ -106,7 +118,7 @@ function App() {
           <div className='absolute flex flex-col justify-between w-full -bottom-100'>
             <ul className='bg-lightGray1 dark:bg-darkGrayishBlue3 divide-y dark:divide-darkGrayishBlue2 rounded-t'>{mappedTaskList}</ul>
             <div className='flex justify-between px-6 py-3 text-darkGrayishBlue1 bg-lightGray1 dark:bg-darkGrayishBlue3 border-t dark:border-t-darkGrayishBlue2 rounded-b'>
-              <p>items left</p>
+              <p>{`${listCounter} items left`}</p>
               <div className='hidden md:flex md:gap-2'>
                 <button>All</button>
                 <button>Active</button>
