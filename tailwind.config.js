@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
         backgroundImage: {
-          darkmode1: "url('./src/assets/bg-mobile-dark.jpg')",
-          darkmode2: "url('./src/assets/bg-desktop-dark.jpg')",
-          lightmode1: "url('./src/assets/bg-mobile-light.jpg')",
-          lightmode2: "url('./src/assets/bg-desktop-light.jpg')"
+          darkmode1: "url('./bg-mobile-dark.jpg')",
+          darkmode2: "url('./bg-desktop-dark.jpg')",
+          lightmode1: "url('./bg-mobile-light.jpg')",
+          lightmode2: "url('./bg-desktop-light.jpg')"
         },
         backgroundColor: {
           darkBlue1: "hsl(235, 21%, 11%)",

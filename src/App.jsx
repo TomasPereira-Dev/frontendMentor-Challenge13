@@ -17,7 +17,7 @@ function App() {
   const [taskName, setTaskName] = useState(null);
   const [taskList, setTaskList] = useState(initialFunction);
   const [filteredTaskList, setFilteredTaskList] = useState([]);
-  const [switcherIcon, setSwitcherIcon] = useState("./src/assets/icon-moon.svg");
+  const [switcherIcon, setSwitcherIcon] = useState("./icon-moon.svg");
   const [listCounter, setListCounter] = useState(0);
   const [listFilter, setListFilter] = useState("all");
   const newJson = JSON.stringify(taskList);
@@ -57,9 +57,9 @@ function App() {
     const htmlElement = document.querySelector("html");
     htmlElement.classList.toggle("dark");
     if(htmlElement.classList.contains("dark")){
-      setSwitcherIcon("./src/assets/icon-sun.svg");
+      setSwitcherIcon("./icon-sun.svg");
     }else{
-      setSwitcherIcon("./src/assets/icon-moon.svg");
+      setSwitcherIcon("./icon-moon.svg");
     }
   }
 
@@ -104,26 +104,26 @@ function App() {
       <div className='flex gap-4 items-center'>
         <div className='relative'>
           <input className='appearance-none p-3 border checked:bg-gradient-to-r from-gradientStart to-gradientStop dark:border-darkGrayishBlue2 rounded-full cursor-pointer peer' type='checkbox' checked={!item.isActive} onChange={() => checkHandler(item.id)}/>
-          <img className='absolute top-2 left-2 invisible peer-checked:visible' src="./src/assets/icon-check.svg" alt=" "/>
+          <img className='absolute top-2 left-2 invisible peer-checked:visible' src="./icon-check.svg" alt=" "/>
         </div>
         <p className={`text-darkGrayishBlue4 dark:text-lightGrayishBlue1`}>{item.name}</p>
       </div>
       <button className='invisible group-hover:visible' onClick={() => {deleteHandler(item.id)}}>
-        <img src="./src/assets/icon-cross.svg" alt=" "/>
+        <img src="./icon-cross.svg" alt=" "/>
       </button>
     </li>);
 
     const mappedFilteredList = filteredTaskList.map(item => 
       <li className={`flex justify-between px-6 py-3 ${item.isActive ? `no-underline` : `line-through`} decoration-darkGrayishBlue1`} key={item.id}>
       <div className='flex gap-4 items-center'>
-        <div className='relative max-w-min'>
+        <div className='relative max-w-min'>  
           <input className='appearance-none p-3 border checked:bg-gradient-to-r from-gradientStart to-gradientStop dark:border-darkGrayishBlue2 rounded-full cursor-pointer' type='checkbox' checked={!item.isActive} onChange={() => checkHandler(item.id)}/>
-          <img className='absolute top-2 left-2' src="./src/assets/icon-check.svg" alt=" "/>
+          <img className='absolute top-2 left-2' src="./icon-check.svg" alt=" "/>
         </div>
         <p>{item.name}</p>
       </div>
       <button onClick={() => {deleteHandler(item.id)}}>
-        <img src="./src/assets/icon-cross.svg" alt=" "/>
+        <img src="./icon-cross.svg" alt=" "/>
       </button>
     </li>);
     
@@ -146,7 +146,7 @@ function App() {
         </div>
         <div className='flex items-center gap-4 px-6 py-3 bg-lightGray1 dark:bg-darkGrayishBlue3 rounded'> 
           <div className='p-3 border max-w-min dark:border-darkGrayishBlue2 rounded-full'>
-              <img className='invisible' src="./src/assets/icon-check.svg" alt=" "/>
+              <img className='invisible' src="./icon-check.svg" alt=" "/>
           </div>
           <input className='relative top-0.5 w-full text-darkGrayishBlue4 dark:text-lightGrayishBlue1 bg-transparent outline-none caret-brightBlue caret' type="text" placeholder='Create a new todo...' ref={inputRef} onChange={(e)=>{setTaskName(e.target.value)}} onKeyDown={(e)=>{taskHandler(e)}}/>
         </div>
