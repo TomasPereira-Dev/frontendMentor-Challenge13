@@ -84,25 +84,13 @@ function App() {
   }, [taskList])
 
   const filterHandler = useCallback(() => {
-    const taskListCopy = taskList.slice();
     if(listFilter === true){
-      for(let i = 0; i < taskListCopy.length; i++){
-        console.log(taskListCopy[i].isActive)
-        if(taskListCopy[i].isActive === false){
-            taskListCopy.splice(i, 1);
-            console.log(taskListCopy[i].isActive)
-        }
-      }
-      setFilteredTaskList(taskListCopy);   
-    } 
+      const filteredCopy = taskList.filter((item) => item.isActive === true)
+      setFilteredTaskList(filteredCopy);   
+    }
     if(listFilter === false){
-      for(let i = 0; i < taskListCopy.length; i++){
-        console.log(taskListCopy[i].isActive)
-        if(taskListCopy[i].isActive === true){
-          taskListCopy.splice(i, 1);
-        }
-      }
-      setFilteredTaskList(taskListCopy);
+      const filteredCopy = taskList.filter((item) => item.isActive === false)
+      setFilteredTaskList(filteredCopy);   
     }
   },[taskList, listFilter])
  
