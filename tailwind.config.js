@@ -47,6 +47,12 @@ export default {
         caretColor: {
           brightBlue: "hsl(220, 98%, 61%)",
 
+        },
+        colors: {
+          gradientStart: "hsl(192, 100%, 67%)",
+          gradientStop: "hsl(280, 87%, 65%)",
+          lightGrayishBlue1: "hsl(234, 39%, 85%)",
+          darkGrayishBlue1: "hsl(234, 11%, 52%)",
         }
     }
   },
